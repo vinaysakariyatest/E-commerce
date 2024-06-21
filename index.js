@@ -10,9 +10,13 @@ require("./db/connection")
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(express.json({}))
 
-const adminRoute = require("./routes/admin");
+// const adminRoute = require("./routes/admin");
+// const userRoute = require("./routes/user")
 
-app.use("/admin",adminRoute);
+// app.use("/admin",adminRoute);
+// app.use("/user",userRoute);
+
+app.use("/api/v1",require("./routes"))
 
 
 const PORT = process.env.NODE_APP_PORT

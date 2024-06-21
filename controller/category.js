@@ -83,3 +83,23 @@ module.exports.viewCategory = async (req, res) => {
   }
 };
 
+// View Single Category
+exports.singleCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const viewCategory = await category.findById(id);
+
+    if (!viewCategory) {
+      return res.status(404).json({
+        message: "Category not found",
+      });
+    }
+
+    return res.status(200).json({
+      Category: viewCategory,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

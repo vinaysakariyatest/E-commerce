@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema(
   {
-    name: {
+    pname: {
       type: String,
     },
     desc: {
@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
     images: [{
-      type: Array,
+      type: String,
     }],
     brand: {
       type: mongoose.Schema.Types.ObjectId,

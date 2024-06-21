@@ -104,3 +104,24 @@ module.exports.viewBanner = async (req, res) => {
       }
       
 };
+
+// View Single Product
+exports.singleBanner = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const viewBanner = await banner.findById(id);
+
+    if (!viewBanner) {
+      return res.status(404).json({
+        message: "Banner not found",
+      });
+    }
+
+    return res.status(200).json({
+      Banner: viewBanner,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

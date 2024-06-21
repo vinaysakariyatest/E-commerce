@@ -87,3 +87,24 @@ module.exports.viewFAQ= async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// View Single Brand
+exports.singleFAQ = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const viewFAQ  = await FAQ.findById(id);
+
+    if (!viewFAQ ) {
+      return res.status(404).json({
+        message: "FAQ  not found",
+      });
+    }
+
+    return res.status(200).json({
+      FAQ : viewFAQ,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

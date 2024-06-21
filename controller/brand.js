@@ -86,3 +86,25 @@ module.exports.viewBrand = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// View Single Brand
+exports.singleBrand = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const viewBrand  = await brand.findById(id);
+
+    if (!viewBrand ) {
+      return res.status(404).json({
+        message: "Brand  not found",
+      });
+    }
+
+    return res.status(200).json({
+      Brand : viewBrand,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+

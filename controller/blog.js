@@ -97,3 +97,24 @@ module.exports.viewBlog = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// View Single Blog
+exports.singleBlog = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const viewBlog = await blog.findById(id);
+
+    if (!viewBlog) {
+      return res.status(404).json({
+        message: "Blog not found",
+      });
+    }
+
+    return res.status(200).json({
+      Blog: viewBlog,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
