@@ -178,6 +178,16 @@ const registration = joi.object({
     }),
 });
 
+// Role 
+const role = joi.object({
+  roleName: joi.string().required().messages({
+    "string.empty": "Role Name is required.",
+  }),
+  permissions: joi.array().required().messages({
+    "string.empty": "Permissions are required.",
+  }),
+})
+
 module.exports = {
   Login,
   category,
@@ -190,5 +200,6 @@ module.exports = {
   contactus,
   contact,
   product,
-  registration
+  registration,
+  role
 };

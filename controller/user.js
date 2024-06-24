@@ -96,10 +96,9 @@ exports.login = async (req, res) => {
         },
         process.env.SECRET_KEY
       );
-
+      res.header("Authorization", `${token}`)
       return res.status(200).json({
-        message: "Login successfully",
-        token: token,
+        message: "Login successfully"
       });
     }
   } catch (error) {
